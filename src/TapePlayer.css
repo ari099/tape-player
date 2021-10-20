@@ -1,0 +1,37 @@
+g.reel-platter {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+circle#reel-platter-left, circle#reel-platter-right {
+    fill: red;
+    stroke: darkred;
+}
+path#reel-holes-left, path#reel-holes-right {
+    fill: darkred;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+#reel-bottom-left, #reel-bottom-right {
+    fill: darkred;
+    stroke: darkred;
+}
+
+rect#tape-player-top {
+    fill: white;
+    stroke: #cedee9;
+}
+rect#tape-player-bottom {
+    fill: #cedee9;
+    stroke: #cedee9;
+}
+
+rect#player-tracker-top {
+    fill: red;
+}
+rect#player-tracker-bottom {
+    fill: darkred;
+}
+
+rect#player-track {
+    fill: #cedee9;
+}
