@@ -1,6 +1,29 @@
 import './TapePlayer.css';
 import anime from 'animejs';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+/**
+ * Potentially draggable tape player tracker component
+ */
+ const TapePlayerTracker = props => {
+    const [trackerPosX, setTrackerPosX] = useState(0);
+    useEffect(() => {
+      setTrackerPosX((props.trackWidth * (props.pos / props.limit)) + 8);
+    }, []);
+    return (
+      <>
+        <rect id="player-track"
+          height={5} width={190}
+          x={8} y={135} />
+        <g id="player-tracker">
+          <rect id="player-tracker-bottom"
+            x={trackerPosX} y={124} height={20} width={8} />
+          <rect id="player-tracker-top"
+            x={trackerPosX} y={124} height={17} width={8} />
+        </g>
+      </>
+    );
+  };
 
 /**
  * TapePlayer React Component
@@ -27,15 +50,7 @@ import { useEffect, useRef } from 'react';
                 <rect id="tape-player-top"
                     height={184} width={210}
                     x={0} y={0} />
-                <rect id="player-track"
-                    height={5} width={190}
-                    x={8} y={135} />
-                <g id="player-tracker">
-                    <rect id="player-tracker-bottom"
-                        x={8} y={124} height={20} width={8} />
-                    <rect id="player-tracker-top"
-                        x={8} y={124} height={17} width={8} />
-                </g>
+                <TapePlayerTracker limit={150} pos={0} trackWidth={182} />
                 <text className="track-name" x={8} y={111}>Track Name.mp3</text>
                 <polygon className="play-button" onClick={()=>reelsAnimationRef.current.restart()} points="8,155 8,170 23,162.5" />
                 <rect className="stop-button" onClick={()=>reelsAnimationRef.current.pause()} x={35} y={155} height={15} width={15} />
