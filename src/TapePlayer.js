@@ -1,35 +1,41 @@
 import './TapePlayer.css';
 import anime from 'animejs';
 
-const TapePlayer = props => {
+/**
+ * TapePlayer React Component
+ */
+ const TapePlayer = props => {
     const turnReels = () => {
-        anime({
-            targets: '.reel-platter',
-            rotate: '360deg',
-            loop: true,
-            duration: 200,
-            easing: 'linear'
-        });
+      anime({
+        targets: '.reel-platter',
+        rotate: '360deg',
+        loop: true,
+        duration: 400,
+        easing: 'linear'
+      });
     }
 
     return (
-        <svg className="tape-player" width="210" height="129.715" onClick={turnReels}>
+        <svg className="tape-player" width="210" height="189.715">
             <g id="layer1">
                 <rect id="tape-player-bottom"
-                    height={129} width={210}
+                    height={189} width={210}
                     x={0} y={0} />
                 <rect id="tape-player-top"
-                    height={124} width={210}
+                    height={184} width={210}
                     x={0} y={0} />
                 <rect id="player-track"
                     height={5} width={190}
-                    x={8} y={105} />
+                    x={8} y={135} />
                 <g id="player-tracker">
                     <rect id="player-tracker-bottom"
-                        x={8} y={94} height={20} width={8} />
+                        x={8} y={124} height={20} width={8} />
                     <rect id="player-tracker-top"
-                        x={8} y={94} height={17} width={8} />
+                        x={8} y={124} height={17} width={8} />
                 </g>
+                <text className="track-name" x={8} y={111}>Track Name.mp3</text>
+                <polygon className="play-button" onClick={turnReels} points="8,155 8,170 23,162.5" />
+                <rect className="stop-button" x={35} y={155} height={15} width={15} />
                 <g id="reel-left" transform="translate(-5.9629533)">
                     <circle id="reel-bottom-left"
                         cx={65.175735} cy={55.370739} r={33.105137} />
