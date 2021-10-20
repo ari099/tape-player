@@ -1,66 +1,75 @@
+/* Tape Player Styles */
 svg.tape-player {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0px 2px 5px 0px lightblue;
-  }
-  g.reel-platter {
-      transform-box: fill-box;
-      transform-origin: center;
-  }
-  circle#reel-platter-left, circle#reel-platter-right {
-      fill: red;
-      stroke: #D00;
-  }
-  path#reel-holes-left, path#reel-holes-right {
-      fill: darkred;
-  }
-  #reel-bottom-left, #reel-bottom-right {
-      fill: #a00;
-  }
-  
-  rect#tape-player-top {
-      fill: white;
-      stroke: #cedee9;
-  }
-  rect#tape-player-bottom {
-      fill: #cedee9;
-      stroke: #cedee9;
-  }
-  
-  rect#player-tracker-top {
-      fill: red;
-  }
-  rect#player-tracker-bottom {
-      fill: darkred;
-  }
-  
-  rect#player-track {
-      fill: #cedee9;
-  }
-  
-  text.track-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 2px 5px 0px lightblue;
+}
+svg.tape-player:hover {
+  animation: playerHover 0.5s;
+  box-shadow: 0px 2px 15px 0px #6c98ad;
+}
+@keyframes playerHover {
+  from { box-shadow: 0px 2px 5px 0px lightblue; }
+  to { box-shadow: 0px 2px 15px 0px #6c98ad; }
+}
+
+g.reel-platter {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+circle#reel-platter-left, circle#reel-platter-right {
+    fill: #e8a0a5;
+}
+path#reel-holes-left, path#reel-holes-right {
+    fill: #f6d9db;
+}
+#reel-bottom-left, #reel-bottom-right {
+    fill: #f6d9db;
+}
+
+rect#tape-player-top {
+    fill: white;
+    stroke: #cedee9;
+}
+rect#tape-player-bottom {
     fill: #cedee9;
-  }
-  
-  rect.stop-button {
-    fill: pink;
-    cursor: pointer;
-  }
-  rect.stop-button:hover {
+    stroke: #cedee9;
+}
+
+rect#player-tracker-top {
     fill: red;
-  }
-  rect.stop-button:active {
-    fill: pink;
-  }
-  polygon.play-button {
-    fill: lightblue;
-    cursor: pointer;
-  }
-  polygon.play-button:hover {
-    fill: #046;
-  }
-  polygon.play-button:active {
-    fill: lightblue;
-  }
+}
+rect#player-tracker-bottom {
+    fill: darkred;
+}
+
+rect#player-track {
+    fill: #cedee9;
+}
+
+text.track-name {
+  fill: #cedee9;
+}
+
+rect.stop-button {
+  fill: pink;
+  cursor: pointer;
+}
+rect.stop-button:hover {
+  fill: red;
+}
+rect.stop-button:active {
+  fill: pink;
+}
+polygon.play-button {
+  fill: lightblue;
+  cursor: pointer;
+}
+polygon.play-button:hover {
+  fill: #046;
+}
+polygon.play-button:active {
+  fill: lightblue;
+}

@@ -1,19 +1,22 @@
 import './TapePlayer.css';
 import anime from 'animejs';
+import { useEffect, useRef } from 'react';
 
 /**
  * TapePlayer React Component
  */
  const TapePlayer = props => {
-    const turnReels = () => {
-      anime({
-        targets: '.reel-platter',
-        rotate: '360deg',
-        loop: true,
-        duration: 400,
-        easing: 'linear'
+    const reelsAnimationRef = useRef(null);
+    useEffect(() => {
+      reelsAnimationRef.current = anime({
+            targets: '.reel-platter',
+            rotate: '360deg',
+            loop: true,
+            duration: 400,
+            easing: 'linear'
       });
-    }
+      reelsAnimationRef.current.pause();
+    }, []);
 
     return (
         <svg className="tape-player" width="210" height="189.715">
@@ -34,8 +37,8 @@ import anime from 'animejs';
                         x={8} y={124} height={17} width={8} />
                 </g>
                 <text className="track-name" x={8} y={111}>Track Name.mp3</text>
-                <polygon className="play-button" onClick={turnReels} points="8,155 8,170 23,162.5" />
-                <rect className="stop-button" x={35} y={155} height={15} width={15} />
+                <polygon className="play-button" onClick={()=>reelsAnimationRef.current.restart()} points="8,155 8,170 23,162.5" />
+                <rect className="stop-button" onClick={()=>reelsAnimationRef.current.pause()} x={35} y={155} height={15} width={15} />
                 <g id="reel-left" transform="translate(-5.9629533)">
                     <circle id="reel-bottom-left"
                         cx={65.175735} cy={55.370739} r={33.105137} />
