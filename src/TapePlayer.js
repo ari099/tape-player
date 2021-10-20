@@ -1,19 +1,19 @@
 import './TapePlayer.css';
 import anime from 'animejs';
 
-function TapePlayer() {
+const TapePlayer = props => {
     const turnReels = () => {
         anime({
             targets: '.reel-platter',
             rotate: '360deg',
             loop: true,
-            duration: 500,
+            duration: 200,
             easing: 'linear'
         });
     }
 
     return (
-        <svg width="210mm" height="129.715mm" onClick={turnReels}>
+        <svg className="tape-player" width="210" height="129.715" onClick={turnReels}>
             <g id="layer1">
                 <rect id="tape-player-bottom"
                     height={129} width={210}
@@ -33,7 +33,7 @@ function TapePlayer() {
                 <g id="reel-left" transform="translate(-5.9629533)">
                     <circle id="reel-bottom-left"
                         cx={65.175735} cy={55.370739} r={33.105137} />
-                    <g className="reel-platter" transform="rotate(180,65.175735,51.607777)">
+                    <g className="reel-platter">
                         <circle id="reel-platter-left"
                             cx={65.175735} cy={51.607777} r={33.105137} />
                         <path id="reel-holes-left"

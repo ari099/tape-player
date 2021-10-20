@@ -1,3 +1,10 @@
+svg.tape-player {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 2px 5px 0px lightblue;
+}
 g.reel-platter {
     transform-box: fill-box;
     transform-origin: center;
