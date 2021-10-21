@@ -73,3 +73,13 @@ polygon.play-button:hover {
 polygon.play-button:active {
   fill: lightblue;
 }
+g.rewind-button {
+  fill: #f8ef07;
+  cursor: pointer;
+}
+g.rewind-button:hover {
+  fill: #dd0;
+}
+g.rewind-button:active {
+  fill: #f8ef07;
+}
