@@ -3,7 +3,7 @@ import TapePlayer from './TapePlayer';
 
 function App() {
   return (
-    <TapePlayer />
+    <TapePlayer trackName="barbershop-tag" />
   );
 }
 
