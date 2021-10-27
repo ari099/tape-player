@@ -21,7 +21,7 @@ path#reel-holes-left, path#reel-holes-right {
 }
 
 rect#tape-player-top {
-    fill: #083763;
+    fill: black;
     stroke: #ffbc40;
     stroke-width: 5px;
 }
@@ -39,7 +39,7 @@ rect#player-tracker-bottom {
 }
 
 rect#player-track {
-    fill: #041720;
+    fill: #7c5712;
 }
 
 text.track-name {
