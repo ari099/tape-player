@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from 'react';
     const [trackerPosX, setTrackerPosX] = useState(0);
     useEffect(() => {
       setTrackerPosX((props.trackWidth * (props.currentTime / props.totalTime)) + 8);
-    }, []);
+    });
     return (
       <>
         <rect id="player-track"
@@ -28,26 +28,30 @@ import { useEffect, useRef, useState } from 'react';
 /**
  * TapePlayer React Component
  */
- const TapePlayer = props => {
+const TapePlayer = props => {
   const reelsAnimationRef = useRef(null);
-  const sound = new Audio('http://www.kozco.com/tech/LRMonoPhase4.wav');
+  const sound = useRef(new Audio('http://www.kozco.com/tech/LRMonoPhase4.wav'));
   const [seekValue, setSeekValue] = useState(0);
+  const [duration, setDuration] = useState(0);
   useEffect(() => {
-    setSeekValue(sound.currentTime);
-    sound.type = "audio/wav";
-    sound.addEventListener('ended', () => { stopTrack(); reelRewind(); });
+    setSeekValue(sound.current.currentTime);
+    sound.current.type = "audio/wav";
+    sound.current.addEventListener('ended', () => { stopTrack(); rewindTrack(); });
+    sound.current.addEventListener('loadedmetadata', () => { setDuration(sound.current.duration); });
+    sound.current.addEventListener('timeupdate', () => { setSeekValue(sound.current.currentTime); });
+    sound.current.volume = 0.1;
+    sound.current.load();
     reelsAnimationRef.current = anime({
           targets: '.reel-platter',
           rotate: '360deg',
           loop: true,
           duration: 400,
-          easing: 'linear',
-          complete: setSeekValue(sound.currentTime)
+          easing: 'linear'
     });
     reelsAnimationRef.current.pause();
   }, []);
 
-  const reelRewind = () => {
+  const rewindTrack = () => {
     reelsAnimationRef.current.pause();
     anime({
       targets: ".reel-platter",
@@ -55,14 +59,20 @@ import { useEffect, useRef, useState } from 'react';
       duration: 400,
       easing: 'easeInOutQuad',
       complete: () => { 
-        sound.pause();
-        sound.currentTime = 0;
+        sound.current.pause();
+        sound.current.currentTime = 0;
       }
     });
   };
 
-  const playTrack = () => sound.play();
-  const stopTrack = () => sound.pause();
+  const playTrack = () => {
+    reelsAnimationRef.current.restart();
+    sound.current.play();
+  }
+  const stopTrack = () => { 
+    reelsAnimationRef.current.pause();
+    sound.current.pause()
+  };
 
   return (
       <>
@@ -76,12 +86,12 @@ import { useEffect, useRef, useState } from 'react';
                     x={0} y={0} />
                 <TapePlayerTracker limit={150}
                   currentTime={seekValue}
-                  totalTime={sound.duration}
+                  totalTime={duration}
                   trackWidth={182} />
                 <text className="track-name" x={8} y={111}>Track Name.mp3</text>
-                <polygon className="play-button" onClick={()=> { reelsAnimationRef.current.restart(); playTrack(); }} points="8,155 8,170 23,162.5" />
-                <rect className="stop-button" onClick={()=>{ reelsAnimationRef.current.pause(); stopTrack(); }} x={35} y={155} height={15} width={15} />
-                <g className="rewind-button" onClick={reelRewind}>
+                <polygon className="play-button" onClick={playTrack} points="8,155 8,170 23,162.5" />
+                <rect className="stop-button" onClick={stopTrack} x={35} y={155} height={15} width={15} />
+                <g className="rewind-button" onClick={rewindTrack}>
                   <polygon points="65,162.5 75,155 75,170" />
                   <rect x={62} y={155} height={15} width={2.5} />
                 </g>
