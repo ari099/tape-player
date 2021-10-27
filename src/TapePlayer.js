@@ -1,7 +1,6 @@
 import './TapePlayer.css';
 import anime from 'animejs';
 import { useEffect, useRef, useState } from 'react';
-import { Howl } from 'howler';
 
 /**
  * Potentially draggable tape player tracker component
@@ -9,7 +8,7 @@ import { Howl } from 'howler';
  const TapePlayerTracker = props => {
     const [trackerPosX, setTrackerPosX] = useState(0);
     useEffect(() => {
-      setTrackerPosX((props.trackWidth * (props.pos / props.limit)) + 8);
+      setTrackerPosX((props.trackWidth * (props.currentTime / props.totalTime)) + 8);
     }, []);
     return (
       <>
@@ -34,12 +33,16 @@ import { Howl } from 'howler';
   const sound = new Audio('http://www.kozco.com/tech/LRMonoPhase4.wav');
   const [seekValue, setSeekValue] = useState(0);
   useEffect(() => {
+    setSeekValue(sound.currentTime);
+    sound.type = "audio/wav";
+    sound.addEventListener('ended', () => { stopTrack(); reelRewind(); });
     reelsAnimationRef.current = anime({
           targets: '.reel-platter',
           rotate: '360deg',
           loop: true,
           duration: 400,
-          easing: 'linear'
+          easing: 'linear',
+          complete: setSeekValue(sound.currentTime)
     });
     reelsAnimationRef.current.pause();
   }, []);
@@ -52,16 +55,13 @@ import { Howl } from 'howler';
       duration: 400,
       easing: 'easeInOutQuad',
       complete: () => { 
+        sound.pause();
         sound.currentTime = 0;
       }
     });
   };
 
-  const playTrack = () => {
-    sound.type = 'audio/wav';
-    sound.play();
-  }
-
+  const playTrack = () => sound.play();
   const stopTrack = () => sound.pause();
 
   return (
@@ -74,7 +74,10 @@ import { Howl } from 'howler';
                 <rect id="tape-player-top"
                     height={184} width={210}
                     x={0} y={0} />
-                <TapePlayerTracker limit={150} pos={seekValue} trackWidth={182} />
+                <TapePlayerTracker limit={150}
+                  currentTime={seekValue}
+                  totalTime={sound.duration}
+                  trackWidth={182} />
                 <text className="track-name" x={8} y={111}>Track Name.mp3</text>
                 <polygon className="play-button" onClick={()=> { reelsAnimationRef.current.restart(); playTrack(); }} points="8,155 8,170 23,162.5" />
                 <rect className="stop-button" onClick={()=>{ reelsAnimationRef.current.pause(); stopTrack(); }} x={35} y={155} height={15} width={15} />

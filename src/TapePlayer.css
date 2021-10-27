@@ -21,12 +21,14 @@ path#reel-holes-left, path#reel-holes-right {
 }
 
 rect#tape-player-top {
-    fill: black;
-    stroke: #856d1f;
+    fill: #083763;
+    stroke: #ffbc40;
+    stroke-width: 5px;
 }
 rect#tape-player-bottom {
-    fill: #ffbc40;
+    fill: #856d1f;
     stroke: #ffbc40;
+    stroke-width: 5px;
 }
 
 rect#player-tracker-top {
@@ -37,7 +39,7 @@ rect#player-tracker-bottom {
 }
 
 rect#player-track {
-    fill: #201704;
+    fill: #041720;
 }
 
 text.track-name {
@@ -46,32 +48,32 @@ text.track-name {
 }
 
 rect.stop-button {
-  fill: #7c5712;
+  fill: #ffbc40;
   cursor: pointer;
 }
 rect.stop-button:hover {
   fill: red;
 }
 rect.stop-button:active {
-  fill: #7c5712;
+  fill: #ffbc40;
 }
 polygon.play-button {
-  fill: #7c5712;
+  fill: #ffbc40;
   cursor: pointer;
 }
 polygon.play-button:hover {
   fill: #017411;
 }
 polygon.play-button:active {
-  fill: #7c5712;
+  fill: #ffbc40;
 }
 g.rewind-button {
-  fill: #7c5712;
+  fill: #ffbc40;
   cursor: pointer;
 }
 g.rewind-button:hover {
   fill: #ffbc40;
 }
 g.rewind-button:active {
-  fill: #7c5712;
+  fill: #ffbc40;
 }
