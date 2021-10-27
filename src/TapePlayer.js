@@ -30,12 +30,12 @@ import { useEffect, useRef, useState } from 'react';
  */
 const TapePlayer = props => {
   const reelsAnimationRef = useRef(null);
-  const sound = useRef(new Audio('http://www.kozco.com/tech/LRMonoPhase4.wav'));
+  const sound = useRef(new Audio('https://www.kozco.com/tech/piano2-CoolEdit.mp3'));
   const [seekValue, setSeekValue] = useState(0);
   const [duration, setDuration] = useState(0);
   useEffect(() => {
     setSeekValue(sound.current.currentTime);
-    sound.current.type = "audio/wav";
+    sound.current.type = "audio/mpeg";
     sound.current.addEventListener('ended', () => { stopTrack(); rewindTrack(); });
     sound.current.addEventListener('loadedmetadata', () => { setDuration(sound.current.duration); });
     sound.current.addEventListener('timeupdate', () => { setSeekValue(sound.current.currentTime); });
@@ -53,11 +53,17 @@ const TapePlayer = props => {
 
   const rewindTrack = () => {
     reelsAnimationRef.current.pause();
-    anime({
-      targets: ".reel-platter",
-      rotate: "0deg",
-      duration: 400,
+    let rewindAnimation = anime.timeline({
       easing: 'easeInOutQuad',
+      duration: 200
+    });
+    
+    rewindAnimation.add({
+      targets: ".reel-platter",
+      rotate: "0deg"
+    }).add({
+      targets: '#player-tracker-bottom, #player-tracker-top',
+      x: 0,
       complete: () => { 
         sound.current.pause();
         sound.current.currentTime = 0;
@@ -88,7 +94,7 @@ const TapePlayer = props => {
                   currentTime={seekValue}
                   totalTime={duration}
                   trackWidth={182} />
-                <text className="track-name" x={8} y={111}>Track Name.mp3</text>
+                <text className="track-name" x={8} y={111}>Piano Track.mp3</text>
                 <polygon className="play-button" onClick={playTrack} points="8,155 8,170 23,162.5" />
                 <rect className="stop-button" onClick={stopTrack} x={35} y={155} height={15} width={15} />
                 <g className="rewind-button" onClick={rewindTrack}>
