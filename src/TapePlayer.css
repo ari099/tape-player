@@ -11,35 +11,43 @@ g.reel-platter {
     transform-origin: center;
 }
 circle#reel-platter-left, circle#reel-platter-right {
-    fill: #ffbc40;
+    fill: #b597e2;
+    stroke: #2d1650;
+    stroke-width: 3px;
 }
 path#reel-holes-left, path#reel-holes-right {
-    fill: #47300c;
+    fill: #2d1650;
 }
 #reel-bottom-left, #reel-bottom-right {
-    fill: #7c5712;
+    fill: #2d1650;
+    stroke: #2d1650;
+    stroke-width: 3px;
 }
 
 rect#tape-player-top {
-    fill: black;
-    stroke: #ffbc40;
-    stroke-width: 5px;
+    fill: #5a2ca0;
+    stroke: #2d1650;
+    stroke-width: 7px;
 }
 rect#tape-player-bottom {
-    fill: #856d1f;
-    stroke: #ffbc40;
-    stroke-width: 5px;
+    fill: #2d1650;
+    stroke: #2d1650;
+    stroke-width: 7px;
 }
 
 rect#player-tracker-top {
-    fill: #ffbc40;
+    fill: #b597e2;
+    stroke: #2d1650;
+    stroke-width: 3px;
 }
 rect#player-tracker-bottom {
-    fill: #7c5712;
+    fill: #2d1650;
+    stroke: #2d1650;
+    stroke-width: 3px;
 }
 
 rect#player-track {
-    fill: #7c5712;
+    fill: #2d1650;
 }
 
 text.track-name {
@@ -48,7 +56,7 @@ text.track-name {
 }
 
 rect.stop-button {
-  fill: #ffbc40;
+  fill: #2d1650;
   cursor: pointer;
 }
 rect.stop-button:hover {
@@ -58,7 +66,7 @@ rect.stop-button:active {
   fill: #ffbc40;
 }
 polygon.play-button {
-  fill: #ffbc40;
+  fill: #2d1650;
   cursor: pointer;
 }
 polygon.play-button:hover {
@@ -68,7 +76,7 @@ polygon.play-button:active {
   fill: #ffbc40;
 }
 g.rewind-button {
-  fill: #ffbc40;
+  fill: #2d1650;
   cursor: pointer;
 }
 g.rewind-button:hover {
