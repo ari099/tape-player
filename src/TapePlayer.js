@@ -30,7 +30,8 @@ import { useEffect, useRef, useState } from 'react';
  */
 const TapePlayer = props => {
   const reelsAnimationRef = useRef(null);
-  const sound = useRef(new Audio('https://www.kozco.com/tech/piano2-CoolEdit.mp3'));
+  const sound = useRef(new Audio('https://www.kozco.com/tech/audacity/ShudBeOKNow.mp3'));
+  const [trackName, setTrackName] = useState("Piano Track.mp3");
   const [seekValue, setSeekValue] = useState(0);
   const [duration, setDuration] = useState(0);
   useEffect(() => {
@@ -94,7 +95,7 @@ const TapePlayer = props => {
                   currentTime={seekValue}
                   totalTime={duration}
                   trackWidth={182} />
-                <text className="track-name" x={8} y={111}>Piano Track.mp3</text>
+                <text className="track-name" x={8} y={111}>{trackName}</text>
                 <polygon className="play-button" onClick={playTrack} points="8,155 8,170 23,162.5" />
                 <rect className="stop-button" onClick={stopTrack} x={35} y={155} height={15} width={15} />
                 <g className="rewind-button" onClick={rewindTrack}>
