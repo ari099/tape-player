@@ -36,7 +36,7 @@ const TapePlayer = props => {
   useEffect(() => {
     setSeekValue(sound.current.currentTime);
     sound.current.type = "audio/mpeg";
-    sound.current.addEventListener('ended', () => { stopTrack(); rewindTrack(); });
+    sound.current.addEventListener('ended', () => { rewindTrack(); });
     sound.current.addEventListener('loadedmetadata', () => { setDuration(sound.current.duration); });
     sound.current.addEventListener('timeupdate', () => { setSeekValue(sound.current.currentTime); });
     sound.current.volume = 0.1;
@@ -68,7 +68,7 @@ const TapePlayer = props => {
         sound.current.pause();
         sound.current.currentTime = 0;
       }
-    });
+    }, '-=300');
   };
 
   const playTrack = () => {
