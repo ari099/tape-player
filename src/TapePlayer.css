@@ -12,42 +12,42 @@ g.reel-platter {
 }
 circle#reel-platter-left, circle#reel-platter-right {
     fill: #dac06a;
-    stroke: #002233;
+    stroke: #303030;
     stroke-width: 3px;
 }
 path#reel-holes-left, path#reel-holes-right {
-    fill: #002233;
+    fill: #303030;
 }
 #reel-bottom-left, #reel-bottom-right {
-    fill: #002233;
-    stroke: #002233;
+    fill: #303030;
+    stroke: #303030;
     stroke-width: 3px;
 }
 
 rect#tape-player-top {
-    fill: #004466;
-    stroke: #002233;
+    fill: #000;
+    stroke: #303030;
     stroke-width: 7px;
 }
 rect#tape-player-bottom {
-    fill: #002233;
-    stroke: #002233;
+    fill: #303030;
+    stroke: #303030;
     stroke-width: 7px;
 }
 
 rect#player-tracker-top {
     fill: #dac06a;
-    stroke: #002233;
+    stroke: #303030;
     stroke-width: 3px;
 }
 rect#player-tracker-bottom {
-    fill: #002233;
-    stroke: #002233;
+    fill: #303030;
+    stroke: #303030;
     stroke-width: 3px;
 }
 
 rect#player-track {
-    fill: #002233;
+    fill: #303030;
 }
 
 text.track-name {
@@ -56,7 +56,7 @@ text.track-name {
 }
 
 rect.stop-button {
-  fill: #002233;
+  fill: #303030;
   cursor: pointer;
 }
 rect.stop-button:hover {
@@ -66,7 +66,7 @@ rect.stop-button:active {
   fill: #ffbc40;
 }
 polygon.play-button {
-  fill: #002233;
+  fill: #303030;
   cursor: pointer;
 }
 polygon.play-button:hover {
@@ -76,7 +76,7 @@ polygon.play-button:active {
   fill: #ffbc40;
 }
 g.rewind-button {
-  fill: #002233;
+  fill: #303030;
   cursor: pointer;
 }
 g.rewind-button:hover {
